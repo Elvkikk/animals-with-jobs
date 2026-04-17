@@ -1,0 +1,52 @@
+.animal-list {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+.animal-list-item {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+}
+.animal-list-item:hover {
+    background: linear-gradient(135deg, #2ef210, #df0cbc);
+    transform: scale(1.15);
+    transition: transform 0.3s, background 0.3s;
+}
+
+.animal-info {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.animal-info img {
+    height: auto;
+    max-width: 250px;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 5px solid transparent;
+    background: linear-gradient(#f70909, #f0f338) padding-box,
+        linear-gradient(135deg, #f21050, #0c2fdf) border-box;
+}
+
+.animal-skills-list, .animal-skill {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    color: radial-gradient(circle, #f21050, #0c2fdf);
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+    padding-left: auto;
+}
+
+.animal-age {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
