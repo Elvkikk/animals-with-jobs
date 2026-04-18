@@ -33,20 +33,25 @@
         linear-gradient(135deg, #f21050, #0c2fdf) border-box;
 }
 
-.animal-skills-list, .animal-skill {
+.animal-skills-list {
     display: flex;
     flex-direction: column;
     font-size: 18px;
     color: radial-gradient(circle, #f21050, #0c2fdf);
     list-style-type: none;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
     padding-top: 5px;
     padding-left: auto;
 }
 
-.animal-age {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
+.animal-skill {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #f21050, #0c2fdf);
+    color: white;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
