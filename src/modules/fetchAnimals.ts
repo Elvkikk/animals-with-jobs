@@ -17,20 +17,21 @@ type AnimalFromJson = {
     employmentEndDate?: string;
 };
 
-// async function retunerar inte datan direkt, utan en Promise som kommer att innehålla datan när den är tillgänglig.
+// async function retunerar inte datan direkt utan en Promise som kommer att innehålla datan när den är tillgänglig.
 export default async function fetchAnimals(): Promise<Animal[] | null> {
     try {
         const response = await fetch('/data/data.json') ;
         if (!response.ok) {
             throw new Error(`Request error! status: ${response.status}`);
         }
+        // Använder map för att transformera datan från JSON-formatet till  Animal-interface
         const data = await response.json() as AnimalFromJson[];
         return data.map((animal) => ({
             name: animal.name,
             kindOfAnimal: animal.kindOfAnimal,
             job: animal.job,
             skills: Array.isArray(animal.skills)
-                ? animal.skills
+                ? animal.skills 
                 : animal.skills
                   ? [animal.skills]
                   : [],

@@ -20,7 +20,7 @@ export default function renderListOfAnimals(animals: Animal[]) {
     listElement.innerHTML = ''; 
 
     animals.forEach(animal => {
-        // Skapa ett list-item för varje djur och lägg till det i listan.
+        // Skapa ett list-item för varje karaktär och lägg till det i listan.
         const listItem = document.createElement('li');
         listItem.className = 'animal-list-item';
         listItem.textContent = animal.name;

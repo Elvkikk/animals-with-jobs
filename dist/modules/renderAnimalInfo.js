@@ -3,53 +3,61 @@
 export default function renderAnimalInfo(animal) {
     const infoDiv = document.querySelector('.animal-info');
     if (!infoDiv) {
-        console.error('Info-diven har inte kunnat hittas eller hämtas');
+        console.error('Datan har inte kunnat hittats eller hämtas');
         return;
     }
     // Tom sträng för att rensa info-diven innan vi lägger till ny information, 
     // så att vi inte får dubbletter varje gång funktionen kallas.
     infoDiv.innerHTML = '';
-    // Skapa och lägg till bilden av djuret
+    // Skapa och lägg till bilden av karaktären
     const imageElement = document.createElement('img');
     imageElement.className = 'animal-image';
     imageElement.src = animal.imageURL;
     imageElement.alt = `${animal.name} the ${animal.kindOfAnimal}`;
     infoDiv.appendChild(imageElement);
-    // Skapa och lägg till namnet och typen av djur
+    // Skapa och lägg till namnet och typen av karaktären
     const nameAndTypeElement = document.createElement('h2');
     nameAndTypeElement.className = 'animal-name-and-type';
     nameAndTypeElement.textContent = `${animal.name} the ${animal.kindOfAnimal}`;
     infoDiv.appendChild(nameAndTypeElement);
+    const infoInnerDiv = document.createElement('div');
+    infoInnerDiv.className = 'animal-info-inner-div';
+    infoDiv.appendChild(infoInnerDiv);
     // Skapa och lägg till jobbet och anställningsstatus
     const jobAndStatusElement = document.createElement('p');
+    jobAndStatusElement.className = 'animal-job-and-status';
     const isCurrentlyEmployed = new Date() >= new Date(animal.employmentStartDate) && new Date() <= new Date(animal.employmentEndDate);
     jobAndStatusElement.textContent = `${animal.job} - Currently ${isCurrentlyEmployed ? 'employed' : 'not employed'}`;
-    infoDiv.appendChild(jobAndStatusElement);
+    infoInnerDiv.appendChild(jobAndStatusElement);
     // Skapa och lägg till åldern
+    const ageRow = document.createElement('div');
+    ageRow.className = 'animal-age-row';
+    infoInnerDiv.appendChild(ageRow);
+    const ageString = document.createElement('p');
+    ageString.className = 'animal-age-string';
+    ageString.textContent = 'Age:';
+    ageRow.appendChild(ageString);
     const ageElement = document.createElement('p');
     const currentYear = new Date().getFullYear();
     const age = currentYear - animal.birthYear;
-    ageElement.className = 'animal-age';
-    ageElement.textContent = `Age: ${age} years old.`;
-    infoDiv.appendChild(ageElement);
+    ageElement.className = 'animal-age-years-old';
+    ageElement.textContent = `${age} years old.`;
+    ageRow.appendChild(ageElement);
     // Skapa och lägg till färdigheterna
     const skillsHeader = document.createElement('h3');
+    skillsHeader.className = 'animal-skills-header';
     skillsHeader.textContent = 'Skills:';
-    infoDiv.appendChild(skillsHeader);
+    infoInnerDiv.appendChild(skillsHeader);
     const skillsList = document.createElement('ul');
     skillsList.className = 'animal-skills-list';
-    animal.skills.forEach(skill => {
+    const skillsArray = Array.isArray(animal.skills) ? animal.skills : [animal.skills];
+    skillsArray.forEach(skill => {
         const skillItem = document.createElement('li');
-        skillItem.className = 'animal-skill';
+        skillItem.className = 'animal-skills-list-item';
         skillItem.textContent = skill;
         skillsList.appendChild(skillItem);
-        function skillItemNone() {
-            if (!(skillItem.textContent = skill)) {
-                skillItem.textContent = 'No skills listed';
-            }
-        }
     });
-    infoDiv.appendChild(skillsList);
+    infoInnerDiv.appendChild(skillsList);
 }
 //=====================================================//
 //Rendera ut bilden på djuret

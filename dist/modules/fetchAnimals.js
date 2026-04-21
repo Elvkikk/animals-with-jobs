@@ -1,14 +1,14 @@
 //Använd fetch för att hämta datan i data/data.json
 //Använd try/catch och om anropet lyckas, returnera datan. Annars, returnera "null"
 //Typa upp funktionen med vad den returnerar
-
-// async function retunerar inte datan direkt, utan en Promise som kommer att innehålla datan när den är tillgänglig.
+// async function retunerar inte datan direkt utan en Promise som kommer att innehålla datan när den är tillgänglig.
 export default async function fetchAnimals() {
     try {
         const response = await fetch('/data/data.json');
         if (!response.ok) {
             throw new Error(`Request error! status: ${response.status}`);
         }
+        // Använder map för att transformera datan från JSON-formatet till  Animal-interface
         const data = await response.json();
         return data.map((animal) => ({
             name: animal.name,
